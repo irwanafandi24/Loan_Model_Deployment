@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
-# import util
-import server.util as util 
+import util
+# import server.util as util
 
 # app = Flask(__name__)
 app = Flask(__name__, static_url_path="/client", static_folder='../client', template_folder="../client")
@@ -50,4 +50,4 @@ if __name__ == "__main__":
     print("Starting Python Flask Server for Home Price Prediction")
     # print(util.get_property_names())
     # print(util.predict_loan(0, 0, 0, 0, 0, 3748, 1668, 110, 360, 1, 'Semiurban'))
-    app.run()
+    app.run(debug=True)
