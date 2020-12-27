@@ -1,7 +1,15 @@
-from flask import Flask, request, jsonify
-import util
+from flask import Flask, request, jsonify, render_template
+# import util
+import server.util as util 
 
-app = Flask(__name__)
+# app = Flask(__name__)
+app = Flask(__name__, static_url_path="/client", static_folder='../client', template_folder="../client")
+
+
+@app.route('/', methods=['GET'])
+def index():
+    if request.method == "GET":
+        return render_template("app.html")
 
 
 @app.route('/get_property_name', methods=['GET'])
@@ -29,7 +37,9 @@ def predict_loan():
     property_area = request.form['property_area']
 
     response = jsonify({
-        'classified_result': util.predict_loan(gender, married, dependents, education, self_employed, applicant_income, coapplicant_income, loan_amount, loan_amount_term, credit_history, property_area)
+        'classified_result': util.predict_loan(gender, married, dependents, education, self_employed, applicant_income,
+                                               coapplicant_income, loan_amount, loan_amount_term, credit_history,
+                                               property_area)
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
 
@@ -41,4 +51,3 @@ if __name__ == "__main__":
     # print(util.get_property_names())
     # print(util.predict_loan(0, 0, 0, 0, 0, 3748, 1668, 110, 360, 1, 'Semiurban'))
     app.run()
-
