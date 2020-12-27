@@ -1,7 +1,6 @@
 import json
 import pickle
-from webbrowser import get
-
+import os
 import numpy as np
 
 # define global variable
@@ -49,11 +48,16 @@ def load_saved_artifacts():
     global __property
     global __model
 
-    with open('./artifacts/columns.json', 'r') as file:
+    path = os.path.dirname(__file__)
+    artifacts = os.path.join(path, "artifacts"),
+
+    # with open('./artifacts/columns.json', 'r') as file: local
+    with open(artifacts[0] + "/columns.json", "r") as file:
         __data_columns = json.load(file)['data_columns']
         __property = __data_columns[:3]
 
-    with open('./artifacts/loan_lr.pickle', 'rb') as file:
+    # with open('./artifacts/loan_lr.pickle', 'rb') as file:
+    with open(artifacts[0] + "/loan_lr.pickle", 'rb') as file:
         __model = pickle.load(file)
     print("Loading the artifatc is done ...")
 
