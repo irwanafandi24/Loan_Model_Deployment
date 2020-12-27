@@ -45,7 +45,8 @@ function onClickedPredictApproval(){
 
     console.log(gender, married, dependents.value, education.value, self_employed, ap_income.value, cap_income.value, loan_am.value, loan_amtrm.value, credit_history.value ,property_area.value)
 
-    var predict_url = "http://127.0.0.1:5000/predict_loan"
+//    var predict_url = "http://127.0.0.1:5000/predict_loan"
+    var predict_url = "/predict_loan"
     $.post(predict_url, {
         gender : gender,
         married : married,
@@ -70,7 +71,8 @@ function onClickedPredictApproval(){
 
 function onPageLoad(){
     console.log("Load Location data from server");
-    var property_url = "http://127.0.0.1:5000/get_property_name";
+//    var property_url = "http://127.0.0.1:5000/get_property_name";
+    var property_url = "/get_property_name";
     $.get(property_url, function(data_property, status){
         console.log("Get Location response");
         if(data_property){
