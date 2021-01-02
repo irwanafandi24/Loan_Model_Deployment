@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify, render_template
-# import util  this for local
+# import util  #this for local
 import server.util as util #this for deployment
 
-# app = Flask(__name__)
+# app = Flask(__name__) #local
 app = Flask(__name__, static_url_path="/client", static_folder='../client', template_folder="../client")
 
 

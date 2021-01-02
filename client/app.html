@@ -9,7 +9,7 @@
 <!--    <script src="app.js"></script>-->
 <!--    <link rel="stylesheet" href="app.css">-->
     <script src="{{ url_for('static',filename='app.js') }}"></script>
-	<link rel="stylesheet"  href= "{{ url_for('static',filename='app.css') }}">
+    <link rel="stylesheet"  href= "{{ url_for('static',filename='app.css') }}">
 </head>
 <body>
     <div class="img"></div>
@@ -27,7 +27,7 @@
                                 <option selected>Rural</option>
                             </select>
                         </div>
-                    </div> 
+                    </div>
 
                     <fieldset class="form-group">
                         <div class="row">
@@ -85,7 +85,7 @@
                                 <option value="1">Graduate</option>
                             </select>
                         </div>
-                    </div> 
+                    </div>
 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Dependents</label>
@@ -97,35 +97,35 @@
                                 <option value="3">3+</option>
                             </select>
                         </div>
-                    </div> 
+                    </div>
 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Ap. Income</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="uiApIncome" placeholder="Input Number 1000-4000">
+                            <input type="number" min="0" step="1" class="form-control" id="uiApIncome" placeholder="Input your income">
                         </div>
-                    </div> 
-                    
+                    </div>
+
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">C.Ap. Income</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="uiCapIncome" placeholder="Input Number 1000-4000">
+                            <input type="number" min="0" step="1" class="form-control" id="uiCapIncome" placeholder="Input your Co Income">
                         </div>
-                    </div> 
+                    </div>
 
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label">Loan Am</label>
+                        <label class="col-sm-3 col-form-label">Loan Amount</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="uiLoanAm" placeholder="Input Number 100-500">
+                            <input type="number" min="0" step="1" class="form-control" id="uiLoanAm" placeholder="Input loan">
                         </div>
-                    </div> 
+                    </div>
 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Loan Am.Trm</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="uiLoanAmTrm" placeholder="Input Number 100-500">
+                            <input type="number" min="0" step="1" class="form-control" id="uiLoanAmTrm" placeholder="How long (days)">
                         </div>
-                    </div> 
+                    </div>
 
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label">Credit Hist</label>
@@ -135,9 +135,12 @@
                                 <option>1</option>
                             </select>
                         </div>
-                    </div> 
+                    </div>
 
-                    <button type="button" onclick="onClickedPredictApproval()" class="btn btn-primary col-sm-12">Primary</button>
+                    <div class="row">
+                    <button type="button" onclick="onClickedReset()" class="btn btn-danger col-sm-5 offset-sm-1 predict-btn">Reset Result</button>
+                    <button type="button" onclick="onClickedPredictApproval()" class="btn btn-success col-sm-5 reset-btn">Submit Loan</button>
+                  </div>
                 </form>
             </div>
             <div class="col-md-3 col-lg-3 result_area" id="uiApprovalResult">
@@ -145,8 +148,52 @@
             </div>
         </div>
     </div>
+    <div class="outer-info">
+      <div class="container explanation">
+          <div class="row title-exp">
+            <div class="col-md-12"><h2>Data Information</h2></div>
+          </div>
+          <div class="row">
+              <div class="col-md-2 col-lg-2 offset-md-2 offset-lg-2">
+                <ul class="list-group">
+                  <li class="list-group-item">Property Area</li>
+                  <li class="list-group-item">Gender</li>
+                  <li class="list-group-item">Married</li>
+                  <li class="list-group-item">Self Emp</li>
+                  <li class="list-group-item">Education</li>
+                  <li class="list-group-item">Dependents</li>
+                  <li class="list-group-item">Ap. Income</li>
+                  <li class="list-group-item">C.Ap. Income</li>
+                  <li class="list-group-item">Loan Am</li>
+                  <li class="list-group-item">Loan Am.Trm</li>
+                  <li class="list-group-item">Credit Hist</li>
+                </ul>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <ul class="list-group">
+                  <li class="list-group-item">The type of location where the applicant’s property lies</li>
+                  <li class="list-group-item">Gender of the applicant</li>
+                  <li class="list-group-item">The marital status of the applicant</li>
+                  <li class="list-group-item">If the applicant is self-employed or not </li>
+                  <li class="list-group-item">Education level of the applicant</li>
+                  <li class="list-group-item">Noumber of dependent on the applicant</li>
+                  <li class="list-group-item">The amount of income the applicant earns</li>
+                  <li class="list-group-item">The amount of income the co-applicant earns</li>
+                  <li class="list-group-item">he amount of loan the applicant has requested for</li>
+                  <li class="list-group-item">The number of days over which the loan will be paid</li>
+                  <li class="list-group-item">A record of a borrower's responsible repayment of debts </li>
+                </ul>
+              </div>
+          </div>
+      </div>
+  </div>
     <footer class="footer_area">
-        github : irwanafandi24
+      <ul class="ul-footer">
+        <li class="li-footer"><a href="https://www.linkedin.com/in/mohamadirwanafandi/" target="_blank">LinkedIn</a></li>
+        <li class="li-footer"><a href="https://github.com/irwanafandi24" target="_blank">Github</a></li>
+        <li class="li-footer"><a href="https://medium.com/@mohamadirwanafandi" target="_blank">Medium</a></li>
+        <li class="li-footer"><a href="https://www.instagram.com/irwan_afandi/" target="_blank">Instagram</a></li>
+      </ul>
     </footer>
 </body>
 </html>

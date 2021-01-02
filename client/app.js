@@ -69,6 +69,11 @@ function onClickedPredictApproval(){
     });
 }
 
+function onClickedReset(){
+  var approvalResult = document.getElementById("uiApprovalResult");
+  approvalResult.innerHTML = "<h2 class='text-result'>Approval Result</h2>";
+}
+
 function onPageLoad(){
     console.log("Load Location data from server");
 //    var property_url = "http://127.0.0.1:5000/get_property_name";

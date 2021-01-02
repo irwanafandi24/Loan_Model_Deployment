@@ -1,0 +1,1 @@
+Loan_lr has different format from DPhi_Quis_3_loan_Prediction, I have updated my model and got model acccuracy 87.1%. So if you want to update the website using the new model, you need update the server, js and util
